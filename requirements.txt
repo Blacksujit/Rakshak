@@ -72,9 +72,6 @@ namex==0.0.8
 nest-asyncio==1.6.0
 networkx==3.3
 nltk==3.8.1
-numpy==1.26.4
-openai==0.28.0
-opencv-python==4.9.0.80
 opt-einsum==3.3.0
 optree==0.11.0
 packaging==24.0
@@ -150,4 +147,4 @@ wordcloud==1.9.3
 wrapt==1.16.0
 wsproto==1.2.0
 yarl==1.9.4
-Python==3.11.3
+# Python >=3.7,<3.11
