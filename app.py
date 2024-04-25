@@ -204,8 +204,7 @@ def homer():
 @app.route("/about", methods=['GET', 'POST'])
 def about():
     return render_template("about.html")
-
-app.run(debug=True, host="0.0.0.0")
+ 
 
 
 
