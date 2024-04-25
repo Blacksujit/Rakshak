@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Spam Detector</title>
+    <script>
+        if (localStorage.getItem('dark-mode') == 'true' || !('dark-mode' in localStorage)) {
+            document.querySelector('html').classList.add('dark');
+        } else {
+            document.querySelector('html').classList.remove('dark');
+        }        
+    </script>
+    <style>
+        .pl {
+            text-align: justify;
+        }
+    </style>
+    <link href="static/style.b973ef58d3fd736d16d2.css" rel="stylesheet">
+</head>
+<body class="pa dh ly pj me mw pk">
+    <div class="uh fp ao lu">
+        <header class="ii au ib">
+            <div class="ax ss ht yo">
+                <div class="uh fm fw ae">
+                    <div class="fr om"> <a class="ul" href="/" aria-label="Cruip"> <svg class="ap uj"
+                                viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient x1="26%" y1="100%" x2="100%" y2="100%" id="logo_a">
+                                        <stop stop-color="#3ABAB4" offset="0%"></stop>
+                                        <stop stop-color="#7F9CF5" offset="100%"></stop>
+                                    </linearGradient>
+                                    <linearGradient x1="26%" y1="100%" x2="100%" y2="100%" id="logo_b">
+                                        <stop stop-color="#3ABAB4" offset="0%"></stop>
+                                        <stop stop-color="#3ABAB4" stop-opacity="0" offset="100%"></stop>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M32 16h-8a8 8 0 10-16 0H0C0 7.163 7.163 0 16 0s16 7.163 16 16z"
+                                    fill="url(#logo_a)"></path>
+                                <path d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16h8a8 8 0 1016 0h8z"
+                                    fill="url(#logo_b)"></path>
+                            </svg> </a> </div>
+                    <nav class="uv bn bp">
+                        <ul class="uh fi fd fm pv">
+                            <li> <a class="text-gray-600 vp dark--text-gray-300 ga hh ho uh fm d_ dz vr"
+                                    href="/">HOME</a> </li>
+                            <li> <a class="text-gray-600 vp dark--text-gray-300 ga hh ho uh fm d_ dz vr"
+                                    href="/about">ABOUT</a> </li>
+                        </ul>
+                        <div class="form-switch uh fp fb sx"> <input type="checkbox" name="light-switch"
+                                id="light-switch-desktop" class="light-switch it"> <label class="is"
+                                for="light-switch-desktop"> <span class="is ce co cv mf mb rc iw"
+                                    aria-hidden="true"></span> <svg class="ii io" width="44" height="24"
+                                    viewBox="0 0 44 24" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="cx text-white" fill-rule="nonzero" opacity=".88">
+                                        <path
+                                            d="M32 8a.5.5 0 00.5-.5v-1a.5.5 0 10-1 0v1a.5.5 0 00.5.5zM35.182 9.318a.5.5 0 00.354-.147l.707-.707a.5.5 0 00-.707-.707l-.707.707a.5.5 0 00.353.854zM37.5 11.5h-1a.5.5 0 100 1h1a.5.5 0 100-1zM35.536 14.829a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM32 16a.5.5 0 00-.5.5v1a.5.5 0 101 0v-1a.5.5 0 00-.5-.5zM28.464 14.829l-.707.707a.5.5 0 00.707.707l.707-.707a.5.5 0 00-.707-.707zM28 12a.5.5 0 00-.5-.5h-1a.5.5 0 100 1h1a.5.5 0 00.5-.5zM28.464 9.171a.5.5 0 00.707-.707l-.707-.707a.5.5 0 00-.707.707l.707.707z">
+                                        </path>
+                                        <circle cx="32" cy="12" r="3"></circle>
+                                        <circle fill-opacity=".4" cx="12" cy="12" r="6"></circle>
+                                        <circle fill-opacity=".88" cx="12" cy="12" r="3"></circle>
+                                    </g>
+                                </svg> <span class="it">Switch to light / dark version</span> </label> </div>
+                    </nav>
+                    <div class="up bi" x-data="{ expanded: false }">
+                        <div class="form-switch uh fp fb ob ow"> <input type="checkbox" name="light-switch"
+                                id="light-switch-mobile" class="light-switch it"> <label class="is"
+                                for="light-switch-mobile"> <span class="is ce co cv mf mb rc iw"
+                                    aria-hidden="true"></span> <svg class="ii io" width="44" height="24"
+                                    viewBox="0 0 44 24" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="cx text-white" fill-rule="nonzero" opacity=".88">
+                                        <path
+                                            d="M32 8a.5.5 0 00.5-.5v-1a.5.5 0 10-1 0v1a.5.5 0 00.5.5zM35.182 9.318a.5.5 0 00.354-.147l.707-.707a.5.5 0 00-.707-.707l-.707.707a.5.5 0 00.353.854zM37.5 11.5h-1a.5.5 0 100 1h1a.5.5 0 100-1zM35.536 14.829a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM32 16a.5.5 0 00-.5.5v1a.5.5 0 101 0v-1a.5.5 0 00-.5-.5zM28.464 14.829l-.707.707a.5.5 0 00.707.707l.707-.707a.5.5 0 00-.707-.707zM28 12a.5.5 0 00-.5-.5h-1a.5.5 0 100 1h1a.5.5 0 00.5-.5zM28.464 9.171a.5.5 0 00.707-.707l-.707-.707a.5.5 0 00-.707.707l.707.707z">
+                                        </path>
+                                        <circle cx="32" cy="12" r="3"></circle>
+                                        <circle fill-opacity=".4" cx="12" cy="12" r="6"></circle>
+                                        <circle fill-opacity=".88" cx="12" cy="12" r="3"></circle>
+                                    </g>
+                                </svg> <span class="it">Switch to light / dark version</span> </label> </div> <button
+                            class="rv" :class="{ 'active': expanded }" @click.stop="expanded = !expanded"
+                            aria-controls="mobile-nav" :aria-expanded="expanded"> <span class="it">Menu</span> <svg
+                                class="ad uq cx pj vp dark--text-gray-300 ga d_ dz vr" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect y="4" width="24" height="2" rx="1"></rect>
+                                <rect y="11" width="24" height="2" rx="1"></rect>
+                                <rect y="18" width="24" height="2" rx="1"></rect>
+                            </svg> </button>
+                        <nav id="mobile-nav" class="ir ip at iy if au fe ok la ly me rl rd"
+                            @click.outside="expanded = false" @keydown.escape.window="expanded = false"
+                            x-show="expanded" x-transition:enter="d_ vi vt nv" x-transition:enter-start="db na"
+                            x-transition:enter-end="opacity--100 nm" x-transition:leave="d_ vi vt"
+                            x-transition:leave-start="opacity--100" x-transition:leave-end="db" x-cloak="">
+                            <div class="hp hj hq"> <svg class="ap uj" viewBox="0 0 32 32"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient x1="26%" y1="100%" x2="100%" y2="100%" id="menulogo_a">
+                                            <stop stop-color="#3ABAB4" offset="0%"></stop>
+                                            <stop stop-color="#7F9CF5" offset="100%"></stop>
+                                        </linearGradient>
+                                        <linearGradient x1="26%" y1="100%" x2="100%" y2="100%" id="menulogo_b">
+                                            <stop stop-color="#3ABAB4" offset="0%"></stop>
+                                            <stop stop-color="#3ABAB4" stop-opacity="0" offset="100%"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M32 16h-8a8 8 0 10-16 0H0C0 7.163 7.163 0 16 0s16 7.163 16 16z"
+                                        fill="url(#menulogo_a)"></path>
+                                    <path d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16h8a8 8 0 1016 0h8z"
+                                        fill="url(#menulogo_b)"></path>
+                                </svg>
+                                <ul>
+                                    <br>
+                                    <li> <a class="uh text-gray-600 vp dark--text-gray-300 ga ho" href="/">HOME</a>
+                                    </li>
+                                    <li> <a class="uh text-gray-600 vp dark--text-gray-300 ga ho"
+                                            href="/about">ABOUT</a> </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <br><br>
+        <main class="fi">
+
+            <div class="is ax ss um in ig" aria-hidden="true">
+                <svg class="ii ip il nv ng ur gt" width="800" height="502" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="400" cy="102" r="400" fill="url(#heroglow_paint0_radial)" fill-opacity=".6"></circle>
+                    <circle cx="209" cy="289" r="170" fill="url(#heroglow_paint1_radial)" fill-opacity=".4"></circle>
+                    <defs>
+                        <radialGradient id="heroglow_paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                            gradientTransform="rotate(90 149 251) scale(315.089)">
+                            <stop stop-color="#3ABAB4"></stop>
+                            <stop offset="1" stop-color="#3ABAB4" stop-opacity=".01"></stop>
+                        </radialGradient>
+                        <radialGradient id="heroglow_paint1_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                            gradientTransform="rotate(90 -40 249) scale(133.913)">
+                            <stop stop-color="#667EEA"></stop>
+                            <stop offset="1" stop-color="#667EEA" stop-opacity=".01"></stop>
+                        </radialGradient>
+                    </defs>
+                </svg>
+            </div>
+            <section>
+                <div class="ax ss ht yo">
+                    <div style="margin-top:50px">
+                        <div class="br bm bw xw fm">
+                            <div class="ym wd sp yx po wo">
+                                <h1 class="h1 ke sm pf pg" data-aos="fade-down">Is spam filtering necessary?</h1>
+                                <p class="pl text-gray-600 dark--text-gray-400" data-aos="fade-down"
+                                    data-aos-delay="150">In today’s world, spam filtering is a must to protect your
+                                    business. Spam is not going away.
+                                    In today’s world, spam filtering is a must to protect your business. Spam is not
+                                    going away. It is estimated that 70 percent of all email and SMS sent globally is
+                                    spam, and the volume of spam continues to grow because spam remains a lucrative
+                                    business. Spammers get ever more sophisticated and creative in their tactics to get
+                                    their messages into your inboxes and wreak their havoc. Spam filtering solutions
+                                    must continually be updated to address this evolving threat.</p>
+                                <br>
+                            </div>
+                            <div class="yg wv po wu" x-data="{ modalExpanded: false }" data-aos="fade-up"
+                                data-aos-delay="450">
+                                <div class="up is fb fm">
+                                    <img width="544" height="674" aria-hidden="true" style="opacity:0">
+                                    <img class="ii" src="static/images/spam_filter.png"
+                                        style="max-width:150%; margin-top:-60px">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="ax ss ht yo">
+                    <div style="margin-top:50px">
+                        <div class="ym wd sp yx po wo">
+                            <h1 class="h1 ke sm pf pg" data-aos="fade-down">Why is spam filtering important?</h1>
+                            <p class="pl text-gray-600 dark--text-gray-400" data-aos="fade-down" data-aos-delay="150">
+                                A spam filtering solution cannot be 100 percent effective. However, a business email
+                                system and SMS without spam filtering is highly vulnerable, if not unusable. It is
+                                important to stop as much spam as you can, to protect your network from the many
+                                possible risks: viruses, phishing attacks, compromised web links and other malicious
+                                content. By preventing spam email, SMS from reaching your employees’ mailboxes, spam
+                                filters give an additional layer of protection to your users, your network, and your
+                                business.</p>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    </section>
+
+    <section>
+        <div class="ax ss ht yo">
+            <div style="margin-top:50px">
+                <div class="ym wd sp yx po wo">
+                    <h1 class="h1 ke sm pf pg" data-aos="fade-down">Do you need a spam filter?</h1>
+                    <p class="pl text-gray-600 dark--text-gray-400" data-aos="fade-down" data-aos-delay="150">At the
+                        very least, spam email and SMS is a nuisance that will clog up your employees’ inboxes and
+                        overload your servers. Spam is also dangerous — the entry point for serious attacks that could
+                        damage your computers, your computer network, your bottom line, and even your company’s
+                        reputation. Yes, you need a spam filter solution as the key first line of defense.</p>
+                    <br>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="ax ss ht yo">
+            <div style="margin-top:50px">
+                <div class="ym wd sp yx po wo">
+                    <h1 class="h1 ke sm pf pg" data-aos="fade-down">How can spam filters help you?</h1>
+                    <p class="pl text-gray-600 dark--text-gray-400" data-aos="fade-down" data-aos-delay="150">We hope
+                        you are convinced that spam filters are essential to protect your business. When you decide to
+                        invest or upgrade your spam filter solution, know that there are countless spam filter programs
+                        out there and it will take time to figure out which one works best for your business. Here are a
+                        few key things to look for: At a minimum, the solution you choose must block spam. This might
+                        sound like a given, but not all spam filter software is up to the job (or doesn’t keep up to
+                        date with the evolving world of spam attacks). Our Spam Detector can detect Most of Spam SMS and
+                        Spam Emails
+                    </p>
+                    <br>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    </main>
+    </div>
+    <script src="static/main.bff24adf2375a62a4452.js"></script>
+</body>
+
+</html>

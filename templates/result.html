@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+    <meta charset="utf-8">
+    <title>Spam Detector</title>
+    <script>
+        if (localStorage.getItem('dark-mode') == 'true' || !('dark-mode' in localStorage)) {
+            document.querySelector('html').classList.add('dark');
+        } else {
+            document.querySelector('html').classList.remove('dark');
+        }        
+    </script>
+    <link href="static/style.b973ef58d3fd736d16d2.css" rel="stylesheet">
+</head>
+
+<body class="pa dh ly pj me mw pk">
+    <div class="uh fp ao lu">
+        <header class="ii au ib">
+            <div class="ax ss ht yo">
+                <div class="uh fm fw ae">
+                    <div class="fr om"> <a class="ul" href="/" aria-label="Cruip"> <svg class="ap uj"
+                                viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                <defs>
+                                    <linearGradient x1="26%" y1="100%" x2="100%" y2="100%" id="logo_a">
+                                        <stop stop-color="#3ABAB4" offset="0%"></stop>
+                                        <stop stop-color="#7F9CF5" offset="100%"></stop>
+                                    </linearGradient>
+                                    <linearGradient x1="26%" y1="100%" x2="100%" y2="100%" id="logo_b">
+                                        <stop stop-color="#3ABAB4" offset="0%"></stop>
+                                        <stop stop-color="#3ABAB4" stop-opacity="0" offset="100%"></stop>
+                                    </linearGradient>
+                                </defs>
+                                <path d="M32 16h-8a8 8 0 10-16 0H0C0 7.163 7.163 0 16 0s16 7.163 16 16z"
+                                    fill="url(#logo_a)"></path>
+                                <path d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16h8a8 8 0 1016 0h8z"
+                                    fill="url(#logo_b)"></path>
+                            </svg> </a> </div>
+                    <nav class="uv bn bp">
+                        <ul class="uh fi fd fm pv">
+                            <li> <a class="text-gray-600 vp dark--text-gray-300 ga hh ho uh fm d_ dz vr"
+                                    href="/">HOME</a> </li>
+                            <li> <a class="text-gray-600 vp dark--text-gray-300 ga hh ho uh fm d_ dz vr"
+                                    href="/about">ABOUT</a> </li>
+
+                        </ul>
+                        <div class="form-switch uh fp fb sx"> <input type="checkbox" name="light-switch"
+                                id="light-switch-desktop" class="light-switch it"> <label class="is"
+                                for="light-switch-desktop"> <span class="is ce co cv mf mb rc iw"
+                                    aria-hidden="true"></span> <svg class="ii io" width="44" height="24"
+                                    viewBox="0 0 44 24" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="cx text-white" fill-rule="nonzero" opacity=".88">
+                                        <path
+                                            d="M32 8a.5.5 0 00.5-.5v-1a.5.5 0 10-1 0v1a.5.5 0 00.5.5zM35.182 9.318a.5.5 0 00.354-.147l.707-.707a.5.5 0 00-.707-.707l-.707.707a.5.5 0 00.353.854zM37.5 11.5h-1a.5.5 0 100 1h1a.5.5 0 100-1zM35.536 14.829a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM32 16a.5.5 0 00-.5.5v1a.5.5 0 101 0v-1a.5.5 0 00-.5-.5zM28.464 14.829l-.707.707a.5.5 0 00.707.707l.707-.707a.5.5 0 00-.707-.707zM28 12a.5.5 0 00-.5-.5h-1a.5.5 0 100 1h1a.5.5 0 00.5-.5zM28.464 9.171a.5.5 0 00.707-.707l-.707-.707a.5.5 0 00-.707.707l.707.707z">
+                                        </path>
+                                        <circle cx="32" cy="12" r="3"></circle>
+                                        <circle fill-opacity=".4" cx="12" cy="12" r="6"></circle>
+                                        <circle fill-opacity=".88" cx="12" cy="12" r="3"></circle>
+                                    </g>
+                                </svg> <span class="it">Switch to light / dark version</span> </label> </div>
+
+                    </nav>
+                    <div class="up bi" x-data="{ expanded: false }">
+                        <div class="form-switch uh fp fb ob ow"> <input type="checkbox" name="light-switch"
+                                id="light-switch-mobile" class="light-switch it"> <label class="is"
+                                for="light-switch-mobile"> <span class="is ce co cv mf mb rc iw"
+                                    aria-hidden="true"></span> <svg class="ii io" width="44" height="24"
+                                    viewBox="0 0 44 24" xmlns="http://www.w3.org/2000/svg">
+                                    <g class="cx text-white" fill-rule="nonzero" opacity=".88">
+                                        <path
+                                            d="M32 8a.5.5 0 00.5-.5v-1a.5.5 0 10-1 0v1a.5.5 0 00.5.5zM35.182 9.318a.5.5 0 00.354-.147l.707-.707a.5.5 0 00-.707-.707l-.707.707a.5.5 0 00.353.854zM37.5 11.5h-1a.5.5 0 100 1h1a.5.5 0 100-1zM35.536 14.829a.5.5 0 00-.707.707l.707.707a.5.5 0 00.707-.707l-.707-.707zM32 16a.5.5 0 00-.5.5v1a.5.5 0 101 0v-1a.5.5 0 00-.5-.5zM28.464 14.829l-.707.707a.5.5 0 00.707.707l.707-.707a.5.5 0 00-.707-.707zM28 12a.5.5 0 00-.5-.5h-1a.5.5 0 100 1h1a.5.5 0 00.5-.5zM28.464 9.171a.5.5 0 00.707-.707l-.707-.707a.5.5 0 00-.707.707l.707.707z">
+                                        </path>
+                                        <circle cx="32" cy="12" r="3"></circle>
+                                        <circle fill-opacity=".4" cx="12" cy="12" r="6"></circle>
+                                        <circle fill-opacity=".88" cx="12" cy="12" r="3"></circle>
+                                    </g>
+                                </svg> <span class="it">Switch to light / dark version</span> </label> </div> <button
+                            class="rv" :class="{ 'active': expanded }" @click.stop="expanded = !expanded"
+                            aria-controls="mobile-nav" :aria-expanded="expanded"> <span class="it">Menu</span> <svg
+                                class="ad uq cx pj vp dark--text-gray-300 ga d_ dz vr" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect y="4" width="24" height="2" rx="1"></rect>
+                                <rect y="11" width="24" height="2" rx="1"></rect>
+                                <rect y="18" width="24" height="2" rx="1"></rect>
+                            </svg> </button>
+                        <nav id="mobile-nav" class="ir ip at iy if au fe ok la ly me rl rd"
+                            @click.outside="expanded = false" @keydown.escape.window="expanded = false"
+                            x-show="expanded" x-transition:enter="d_ vi vt nv" x-transition:enter-start="db na"
+                            x-transition:enter-end="opacity--100 nm" x-transition:leave="d_ vi vt"
+                            x-transition:leave-start="opacity--100" x-transition:leave-end="db" x-cloak="">
+                            <div class="hp hj hq"> <svg class="ap uj" viewBox="0 0 32 32"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <defs>
+                                        <linearGradient x1="26%" y1="100%" x2="100%" y2="100%" id="menulogo_a">
+                                            <stop stop-color="#3ABAB4" offset="0%"></stop>
+                                            <stop stop-color="#7F9CF5" offset="100%"></stop>
+                                        </linearGradient>
+                                        <linearGradient x1="26%" y1="100%" x2="100%" y2="100%" id="menulogo_b">
+                                            <stop stop-color="#3ABAB4" offset="0%"></stop>
+                                            <stop stop-color="#3ABAB4" stop-opacity="0" offset="100%"></stop>
+                                        </linearGradient>
+                                    </defs>
+                                    <path d="M32 16h-8a8 8 0 10-16 0H0C0 7.163 7.163 0 16 0s16 7.163 16 16z"
+                                        fill="url(#menulogo_a)"></path>
+                                    <path d="M32 16c0 8.837-7.163 16-16 16S0 24.837 0 16h8a8 8 0 1016 0h8z"
+                                        fill="url(#menulogo_b)"></path>
+                                </svg>
+                                <ul>
+                                    <li> <a class="uh text-gray-600 vp dark--text-gray-300 ga ho" href="/">HOME</a>
+                                    </li>
+                                    <li> <a class="uh text-gray-600 vp dark--text-gray-300 ga ho"
+                                            href="/about">ABOUT</a> </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="fi">
+            <section>
+                <div class="ax ss ht yo">
+                    <div class="hu bz nz ld v_">
+                        <div class="ak ss po hy wr">
+                            <br>
+                            <h2 class="h2 pf" data-aos="fade-down"
+                            data-aos-anchor="[data-aos-id-featbl]">Result : 
+                    
+                            {% if spam_per > ham_per %}
+                             <span style="color:rgb(255, 37, 37)">Spam</span> or Ham
+                            {% else %}
+                            Spam or <span style="color:rgb(68, 255, 21)">Ham</span>
+                            {% endif %}
+                        
+                        </h2>
+                        </div>
+                        <div class="aj ss gz bf xa ud ye fk xb xh" data-aos-id-featbl=""> <a
+                                class="uh fp cz vm text-white cn cf cg mv rf" href="#0" data-aos="fade-down"
+                                data-aos-anchor="[data-aos-id-featbl]"> <svg class="ap uj sb" viewBox="0 0 32 32"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path class="cx"
+                                        d="M19 18.414l-4 4L9.586 17l.707-.707L12 14.586V8.414l-5-5L4.414 6l6.293 6.293-1.414 1.414L1.586 6 7 .586l7 7v5l8.463-8.463a3.828 3.828 0 115.414 5.414L21 16.414v6.172l5 5L28.586 25l-6.293-6.293 1.414-1.414L31.414 25 26 30.414l-7-7v-5zm-4 1.172L26.463 8.123a1.828 1.828 0 10-2.586-2.586L12.414 17 15 19.586zM11 30v2C4.925 32 0 27.075 0 21h2a9 9 0 009 9zm0-5v2a6 6 0 01-6-6h2a4 4 0 004 4z"
+                                        fill-rule="nonzero"></path>
+                                </svg>
+                                <div class="pf pl pg p_ sy">SPAM %</div>
+                                <div class="fi dv sm">{{ spam_per }} %</div> <svg
+                                    class="ad uq li nv nu nh d_ dz vr" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                   
+                                </svg>
+                            </a> <a class="uh fp cz vm text-white cn cc cb mm rf" href="#0" data-aos="fade-down"
+                                data-aos-anchor="[data-aos-id-featbl]" data-aos-delay="100"> <svg class="ap uj sb"
+                                    viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="cx"
+                                        d="M20.796 20l-1.677 7.264a6 6 0 01-7.302 4.471L0 28.781V11.54l.35-.3 9.457-8.107a3.751 3.751 0 015.29 5.29L11.175 13H28.5a3.5 3.5 0 012.6 1.156c.663.736.984 1.72.878 2.74-.252 1.808-1.817 3.143-3.622 3.104h-7.56zM2 27.22l10.303 2.575a4 4 0 004.868-2.98L19.204 18h9.173c.812.018 1.508-.575 1.615-1.345A1.5 1.5 0 0028.5 15H11.173a2 2 0 01-1.517-3.3l3.922-4.577a1.755 1.755 0 00-.597-2.733 1.751 1.751 0 00-1.872.262L2 12.46v14.76zM28 .585L29.414 2 23 8.414 21.586 7 28 .586zm-8.272 6.627l-1.94-.485 1.484-5.94 1.94.484-1.484 5.94zm3.544 5l-.485-1.94 5.94-1.486.486 1.94-5.94 1.486z"
+                                        fill-rule="nonzero"></path>
+                                </svg>
+                                <div class="pf pl pg p_ sy">HAM %</div>
+                                <div class="fi dv sm">{{ ham_per }} %</div>
+                                </svg>
+                            </a> <a class="uh fp cz vm text-white cn ca cm mg rf" href="#0" data-aos="fade-down"
+                                data-aos-anchor="[data-aos-id-featbl]" data-aos-delay="200"> <svg class="ap uj sb"
+                                    viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="cx"
+                                        d="M19 5.612V25a6 6 0 11-2-4.472V0h2v2.961A5.98 5.98 0 0023.497 5a8.476 8.476 0 018.444 9.474l-.253 2.13-1.469-1.563A6.472 6.472 0 0025.5 13c-1.842 0-3.634-.6-5.103-1.713l1.206-1.594A6.455 6.455 0 0025.5 11c1.557 0 3.068.428 4.376 1.217A6.475 6.475 0 0023.5 7 7.981 7.981 0 0119 5.612zM13 29a4 4 0 100-8 4 4 0 000 8zM0 5V3h14v2H0zm0 5V8h14v2H0zm0 5v-2h14v2H0z"
+                                        fill-rule="nonzero"></path>
+                                </svg>
+                                <div class="pf pl pg p_ sy">SPAM RATE</div>
+                                <div class="fi dv sm">{{ spam_count }}</div> <svg
+                                    class="ad uq li nv nu nh d_ dz vr" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                   
+                                </svg>
+                            </a> <a class="uh fp cz vm text-white cn cl cy my rf" href="#0" data-aos="fade-down"
+                                data-aos-anchor="[data-aos-id-featbl]" data-aos-delay="300"> <svg class="ap uj sb"
+                                    viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="cx"
+                                        d="M20.243 6.757l.707.707-1.414 1.414-.707-.707a4 4 0 00-5.658 0l-.707.707-1.414-1.414.707-.707a6 6 0 018.486 0zm3.535-3.535l.707.707-1.414 1.414-.707-.707a9 9 0 00-12.728 0l-.707.707L7.515 3.93l.707-.707c4.296-4.296 11.26-4.296 15.556 0zM9 17.212V16a7 7 0 00-7-7H1V7h1a9 9 0 019 9v.788l2.302 5.18L11 23.117V24a4 4 0 01-4 4H5v3H3v-5h4a2 2 0 002-2v-2.118l1.698-.85L9 17.213zm12-.424V16a9 9 0 019-9h1v2h-1a7 7 0 00-7 7v1.212l-1.698 3.82 1.698.85V24a2 2 0 002 2h4v5h-2v-3h-2a4 4 0 01-4-4v-.882l-2.302-1.15L21 16.787zM16 12a1 1 0 110-2 1 1 0 010 2z"
+                                        fill-rule="nonzero"></path>
+                                </svg>
+                                <div class="pf pl pg p_ sy">HAM RATE</div>
+                                <div class="fi dv sm">{{ ham_count }}</div> <svg
+                                    class="ad uq li nv nu nh d_ dz vr" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                </svg>
+                            </a> </div>
+                            </a>
+
+                            <br>
+
+                            <br> 
+                             <a class="uh fp cz vm text-white cn cl cy my rf" href="#0" data-aos="fade-down"
+                                data-aos-anchor="[data-aos-id-featbl]" data-aos-delay="300"> <svg class="ap uj sb"
+                                    viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="cx"
+                                        d="M20.243 6.757l.707.707-1.414 1.414-.707-.707a4 4 0 00-5.658 0l-.707.707-1.414-1.414.707-.707a6 6 0 018.486 0zm3.535-3.535l.707.707-1.414 1.414-.707-.707a9 9 0 00-12.728 0l-.707.707L7.515 3.93l.707-.707c4.296-4.296 11.26-4.296 15.556 0zM9 17.212V16a7 7 0 00-7-7H1V7h1a9 9 0 019 9v.788l2.302 5.18L11 23.117V24a4 4 0 01-4 4H5v3H3v-5h4a2 2 0 002-2v-2.118l1.698-.85L9 17.213zm12-.424V16a9 9 0 019-9h1v2h-1a7 7 0 00-7 7v1.212l-1.698 3.82 1.698.85V24a2 2 0 002 2h4v5h-2v-3h-2a4 4 0 01-4-4v-.882l-2.302-1.15L21 16.787zM16 12a1 1 0 110-2 1 1 0 010 2z"
+                                        fill-rule="nonzero"></path>
+                                </svg>
+                                    {% if result == "Spam Call Detected!" %}
+                                        <p style="color: red;"><b>{{ result }}</b></p>
+                                    {% elif result == "Not a Spam Call" %}
+                                        <p style="color: green;"><b>{{ result }}</b></p>
+                                    {% else %}
+                                        <p><b>{{ result }}</b></p>
+                                    {% endif %}
+
+                                    <p>Spam Probability: {{ spam_per }}% (calculated based on result)</
+
+                                 </div> <svg
+                                    class="ad uq li nv nu nh d_ dz vr" viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                </svg>
+                            </a> </div>
+
+
+                            
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="static/main.bff24adf2375a62a4452.js"></script>
+</body>
+</html>
