@@ -181,7 +181,7 @@ def result():
    
 
 
-@app.route("/result", methods=['POST'])
+@app.route('/result', methods=['POST'])
 def homer():
     user_input = request.form.get("user_input")
     preprocessed_input = transform_text(user_input)
@@ -204,6 +204,8 @@ def homer():
 @app.route("/about", methods=['GET', 'POST'])
 def about():
     return render_template("about.html")
+
+app.run(debug=True, host="0.0.0.0")
 
 
 
