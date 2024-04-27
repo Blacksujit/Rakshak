@@ -59,5 +59,6 @@
   {"phone_number": "+912342346312", "spam_status": "Spam" , "spam_score":1},
   {"phone_number": "+914234423312", "spam_status": "Spam" , "spam_score":1},
   {"phone_number": "+914233233312", "spam_status": "Spam" , "spam_score":1},
+  {"phone_number": "+912269563300", "spam_status": "Spam" , "spam_score":1},
   {"phone_number": "+912334223442", "spam_status": "Spam" , "spam_score":1}
 ]
