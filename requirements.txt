@@ -22,7 +22,6 @@ decorator
 distlib 
 distro 
 Django 
-dnspytho 
 executing 
 fastapi 
 filelock 
