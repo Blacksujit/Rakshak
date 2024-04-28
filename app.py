@@ -26,7 +26,7 @@ import requests
 
 # create a flask app
 
-
+nltk.data.path.append("C:\\Users\\HP\\AppData\\Roaming\\nltk_data\\")
 app = Flask(__name__)
 
 ps = PorterStemmer()
