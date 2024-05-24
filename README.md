@@ -9,6 +9,10 @@
 
 https://spam-detection-tool-1.onrender.com
 
+## Youtube Link:
+
+https://youtu.be/5uzirp4B6rI?si=CwZNA23-iHx6bHXB
+
 ## Problem Statement:
 
 Code: PS07
