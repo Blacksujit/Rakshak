@@ -5,9 +5,6 @@
 ![image](https://github.com/Blacksujit/spam-detection-tool/assets/148805811/71601375-72b0-4d45-b853-deebecbc8fd2)
 
 
-## IGI's Hackathon 2024 Submission 
-
-
 ## Live Project Link :   
 
 https://spam-detection-tool-1.onrender.com
