@@ -1,4 +1,4 @@
-# Spam Detection and Prevention Tool
+# Spam Guard
 
 
 
