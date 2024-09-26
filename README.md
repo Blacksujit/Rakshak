@@ -1,4 +1,4 @@
-# Spam Guard
+# Rakshak
 
 
 
@@ -24,7 +24,7 @@ solution should be able to check is source is genuine or spam
 
 ## Solution : (Our Approach)
 
-The Spam Detection and Prevention Tool is a project developed during a hackathon aimed at detecting and preventing spam across various communication channels. 
+The Spam Detection and Prevention Tool named as Rakshak is a project developed during a hackathon aimed at detecting and preventing spam across various communication channels. 
 This tool provides users with the ability to detect spam messages, emails, multimedia messages (MMS), and short message service (SMS). 
 Additionally, it includes functionality to determine whether phone numbers are associated with spam activity. Furthermore, the project integrates 
 a chatbot where users can seek advice on how to stay safe from spam and fraud.
@@ -35,11 +35,9 @@ a chatbot where users can seek advice on how to stay safe from spam and fraud.
 Utilizes machine learning models to detect spam messages, emails, MMS, and SMS.
 ## Phone Number Analysis:
 Determines whether phone numbers are spam or legitimate.
-## Chatbot Integration: 
+## Chatbot For Communication and awareness: 
 Includes a chatbot interface where users can inquire about spam prevention methods and safety tips.
-## API Integration: 
-Integrates APIs for data fetching, enabling real-time information retrieval for spam detection.
-## Twilio Integration:
+## Spam Call Prevention:
 Utilizes Twilio API for spam call detection and prevention.
 
 
